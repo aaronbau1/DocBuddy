@@ -42,13 +42,19 @@ const PdfFullScreen = ({fileUrl}: PdfFullScreenProps) => {
                 description: 'Please try again later',
                 variant: 'destructive',
               })
-            }} 
+            }}
+            onLoadSuccess={({ numPages }) =>
+                setNumPages(numPages)
+              }
             file={fileUrl}
             className='max-h-full'
-            {... Array(numPages).fill(0).map((_, i) => (
-              <Page key={i} width={width ? width : 1} pageNumber={i + 1} />
+            >
+            {... Array(numPages).fill(0).map((_, i) => {
+              return (
+                <Page key={i} width={width ? width : 1} pageNumber={i + 1} />
               )
-            )}>
+            }
+            )}
             </Document>
           </div>
         </SimpleBar>

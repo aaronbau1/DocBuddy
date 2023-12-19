@@ -91,7 +91,7 @@ const PdfRenderer = ({url}: PdfRendererProps) => {
           </div>
 
           <Button variant = 'ghost'
-            aria-label='previous page'
+            aria-label='next page'
             disabled={numPages === undefined || currPage === numPages}
             onClick={() => {
               setCurrPage((prev) => (prev + 1 > numPages! ? numPages! : prev + 1));
@@ -111,6 +111,9 @@ const PdfRenderer = ({url}: PdfRendererProps) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+              <DropdownMenuItem onSelect={() => setScale(0.5)}>
+                50%
+              </DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setScale(0.67)}>
                 67%
               </DropdownMenuItem>
@@ -119,9 +122,6 @@ const PdfRenderer = ({url}: PdfRendererProps) => {
               </DropdownMenuItem>
               <DropdownMenuItem onSelect={() => setScale(1.5)}>
                 150%
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => setScale(2)}>
-                200%
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
